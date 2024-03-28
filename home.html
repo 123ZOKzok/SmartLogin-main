@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+     <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+  </head>
+  <body>
+    <div class="header py-3 text-bg-dark">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h3 class="m-0 fw-bold">Automated Parking<span class="main-color"> System</span></h3>
+          <button type="button" class="logoutBtn" id="logoutBtn">
+            Log out
+          </button>
+        </div>
+      </div>
+    </div>
+   
+   
+     <!-- Content -->
+     <div class="container mt-4">
+       <div class="row">
+         <!-- First Row -->
+         <div class="col-md-4 mb-4">
+           <div class="card bg-success">
+             <div class="card-body">
+               <h5 class="card-title">Booked Slots</h5>
+               <p class="card-text">105</p>
+             </div>
+           </div>
+         </div>
+         <div class="col-md-4 mb-4">
+           <div class="card bg-primary">
+             <div class="card-body">
+               <h5 class="card-title">Occupied Slots</h5>
+               <p class="card-text">73</p>
+             </div>
+           </div>
+         </div>
+         <div class="col-md-4 mb-4">
+           <div class="card bg-danger">
+             <div class="card-body">
+               <h5 class="card-title">Unoccupied slots</h5>
+               <p class="card-text">50</p>
+             </div>
+           </div>
+         </div>
+       </div>
+   
+       <!-- Image Upload Section -->
+       <div class="row mt-4 mb-4">
+         <div class="col-md-12">
+           <div class="card">
+             <div class="card-body">
+               <h5 class="card-title">Image Upload</h5>
+               <form id="imageUploadForm">
+                 <div class="mb-3">
+                   <label for="frontImageInput" class="form-label">Front of Number Plate</label>
+                   <input class="form-control" type="file" id="frontImageInput" name="frontImage" accept="image/*">
+                 </div>
+                 <div id="frontImagePreview" class="mb-3"></div>
+                 <div class="mb-3">
+                   <label for="backImageInput" class="form-label">Back of Number Plate</label>
+                   <input class="form-control" type="file" id="backImageInput" name="backImage" accept="image/*">
+                 </div>
+                 <div id="backImagePreview" class="mb-3"></div>
+                 <button type="submit" class="btn btn-primary">Upload Images</button>
+               </form>
+             </div>
+           </div>
+         </div>
+       </div>
+   
+       <!-- DataTable Section -->
+       <div class="row">
+         <div class="col-md-12">
+           <div class="card">
+             <div class="card-body">
+               <h5 class="card-title">Data Table</h5>
+               <table id="myDataTable" class="display">
+                 <thead>
+                   <tr>
+                     <th>ID</th>
+                     <th>Slot</th>
+                     <th>Vehicle No.</th>
+                     <th>Entry</th>
+                     <th>Exit</th>
+                     <th>Status</th>
+                   </tr>
+                 </thead>
+                 <tbody>
+                   <tr>
+                     <td>1</td>
+                     <td>A1</td>
+                     <td>KAB 123X</td>
+                     <td>2024-03-27 08:00:00</td>
+                     <td>2024-03-27 16:00:00</td>
+                     <td>
+                       <button type="button" class="btn btn-success">Booked</button>
+                     </td>
+                   </tr>
+                   <tr>
+                     <td>2</td>
+                     <td>B2</td>
+                     <td>KCD 456Y</td>
+                     <td>2024-03-27 09:30:00</td>
+                     <td>2024-03-27 18:00:00</td>
+                     <td>
+                       <button type="button" class="btn btn-danger">Occupied</button>
+                     </td>
+                   </tr>
+                   <tr>
+                     <td>3</td>
+                     <td>C3</td>
+                     <td>KDE 789Z</td>
+                     <td>2024-03-27 11:00:00</td>
+                     <td>2024-03-27 20:00:00</td>
+                     <td>
+                       <button type="button" class="btn btn-warning">Unoccupied</button>
+                     </td>
+                   </tr>
+                   <tr>
+                     <td>4</td>
+                     <td>D4</td>
+                     <td>KFG 101X</td>
+                     <td>2024-03-27 13:15:00</td>
+                     <td>2024-03-27 22:00:00</td>
+                     <td>
+                       <button type="button" class="btn btn-danger">Occupied</button>
+                     </td>
+                   </tr>
+                 </tbody>
+               </table>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   
+     <!-- Bootstrap JS (Optional - if you need dropdowns, modals, etc.) -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+     <!-- jQuery (needed for Bootstrap's JavaScript plugins) -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   
+     <!-- DataTables JS -->
+     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+   
+     <script>
+       $(document).ready(function() {
+         $('#myDataTable').DataTable();
+       });
+   
+       // Function to display image preview
+       function previewImage(input, targetId) {
+         if (input.files && input.files[0]) {
+           var reader = new FileReader();
+   
+           reader.onload = function (e) {
+             $('#' + targetId).html('<img src="' + e.target.result + '" class="img-fluid" alt="Preview">');
+           }
+   
+           reader.readAsDataURL(input.files[0]);
+         }
+       }
+   
+       // When a file is selected, call the preview function
+       $("#frontImageInput").change(function () {
+         previewImage(this, 'frontImagePreview');
+       });
+   
+       $("#backImageInput").change(function () {
+         previewImage(this, 'backImagePreview');
+       });
+   
+       // Upload images to server
+       $('#imageUploadForm').submit(function (e) {
+         e.preventDefault();
+         var formData = new FormData(this);
+   
+         $.ajax({
+           url: 'your-backend-endpoint', // Replace with your actual endpoint
+           type: 'POST',
+           data: formData,
+           success: function (response) {
+             console.log('Images uploaded successfully:', response);
+             // Handle success response
+           },
+           error: function (error) {
+             console.error('Error uploading images:', error);
+             // Handle error
+           },
+           cache: false,
+           contentType: false,
+           processData: false
+         });
+       });
+     </script>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
