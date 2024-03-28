@@ -1,2 +1,2 @@
-# SmartLogin
-Smart Login 
+# Automated-Parking-System
+Automated Parking System
